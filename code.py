@@ -379,14 +379,7 @@ if syll_file:
 
 st.subheader("Detected Units")
 if units_detected_formatted:
-    if "detected_units_area" not in st.session_state:
-        st.session_state.detected_units_area = "\n".join(units_detected_formatted)
-
-    st.text_area(
-        "Detected Units (editable)",
-        key="detected_units_area",
-        height=150
-    )
+    st.text_area("Detected Units (editable)", "\n".join(units_detected_formatted), height=150, key="detected_units_area")
     st.success(f"{len(units_detected_formatted)} units detected.")
 else:
     st.text_area("Detected Units (editable)", "", height=150, key="detected_units_area")
@@ -407,7 +400,7 @@ for line in edited:
         name = line.upper()
     units_list.append(name)
 units_list = [f"UNIT {i+1}: {units_list[i]}" for i in range(len(units_list))]
-num_units = max(1, len(units_list))
+num_units = len(units_list)
 
 # ---------------------------
 # EXAM CONFIG
